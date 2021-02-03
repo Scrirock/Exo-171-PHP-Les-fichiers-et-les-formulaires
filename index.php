@@ -33,5 +33,19 @@
         <input type="submit">
     </form>
 
+    <?php
+
+        if (isset($_GET["success"])){
+            echo "fichier envoyé sans erreur";
+        }
+        elseif (isset($_GET["e"])){
+            $errors = base64_decode($_GET["e"]);
+            $errors = json_decode($errors);
+            foreach ($errors as $error){
+                echo $error."<br>";
+            }
+        }
+    ?>
+
 </body>
 </html>
